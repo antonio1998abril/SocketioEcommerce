@@ -12,6 +12,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(cors())
 
+const Comments = require('./models/chatModel').Chat
+
 //socket io
 const http =require('http').createServer(app)
 const io = require('socket.io')(http)
@@ -19,6 +21,14 @@ const io = require('socket.io')(http)
 
 io.on('connection',socket=>{
     console.log(socket.id + 'connected.')
+
+    socket.on('createComment',async msg=>{
+        const {username,content,post_id,createdAt,rating}=msg
+        const newComment=new Comments({
+            username,content,post_id,createdAt,rating
+        })
+        await newComment.save()
+    })
 
     socket.on('disconnect',()=>{
         console.log(socket.id+ 'disconnected')

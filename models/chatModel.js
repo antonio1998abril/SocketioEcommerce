@@ -2,16 +2,29 @@ const mongoose =require('mongoose')
 const Schema =mongoose.Schema;
 
 const ChatSchema = new Schema({
-    username:String,
-    content:String,
-    product_id:String,
-
+    username:{
+        type:String,
+        required:true
+    },
+    content:{
+        type:String
+    },
+    post_id:{
+        type:String
+    },
     rating:{
         type:Number,
         required:true
+    },
+    createdAt:{
+        type:Date,
+        default:Date.now()
     }
+
 },{
-    reply:Array
+    reply:{
+        type:Array
+    },
 },{
     timestamps:true
 })

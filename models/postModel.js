@@ -18,6 +18,10 @@ const PostSchema = new Schema({
     rating:{
         type:Number,
         required:true
+    },
+    images:{
+        type:Object,
+        required:true
     }
 },{
     timestamps:true

@@ -24,7 +24,7 @@ module.exports={
                     const newPost =new Post({
                         title:title,
                         description,
-                        images,
+                        images:images,
                         numReviews,
                         rating
                     })
