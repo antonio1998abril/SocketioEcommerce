@@ -19,13 +19,11 @@ const ChatSchema = new Schema({
     createdAt:{
         type:Date,
         default:Date.now()
-    }
-
-},{
+    },
     reply:{
         type:Array
-    },
-},{
+    }
+}, {
     timestamps:true
 })
 
